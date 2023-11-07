@@ -4,6 +4,12 @@ import Home from "../pages/Home/Home";
 import SignIn from "../pages/SignIn/SignIn";
 import SignUp from "../pages/SignUp/SignUp";
 import CreateAssignment from "../pages/CreateAssignment/CreateAssignment";
+import PrivateRoute from "./PrivateRoute";
+import MyAssignments from "../pages/MyAssignments/MyAssignments";
+import SubmittedAssignments from "../pages/SubmittedAssignments/SubmittedAssignments";
+import Assignments from "../pages/Assignments/Assignments";
+import ViewAssignment from "../Components/ViewAssignment/ViewAssignment";
+import UpdateAssignment from "../Components/UpdateAssignments/UpdateAssignment";
 
 const routes = createBrowserRouter([
     {
@@ -23,8 +29,28 @@ const routes = createBrowserRouter([
                 element: <SignUp></SignUp>
             },
             {
-                path: 'createAssignment',
-                element: <CreateAssignment></CreateAssignment>
+                path: "assignments",
+                element: <Assignments></Assignments>
+            },
+            {
+                path: 'create-assignment',
+                element: <PrivateRoute><CreateAssignment></CreateAssignment></PrivateRoute>
+            },
+            {
+                path: "my-assignments",
+                element: <PrivateRoute><MyAssignments></MyAssignments></PrivateRoute>
+            },
+            {
+                path: "view-assignment/:id",
+                element: <PrivateRoute> <ViewAssignment></ViewAssignment> </PrivateRoute>,
+            },
+            {
+                path: "update-assignment/:id",
+                element: <PrivateRoute> <UpdateAssignment></UpdateAssignment> </PrivateRoute>,
+            },
+            {
+                path: "submitted-assignments",
+                element: <PrivateRoute> <SubmittedAssignments></SubmittedAssignments> </PrivateRoute>
             }
         ]
     }

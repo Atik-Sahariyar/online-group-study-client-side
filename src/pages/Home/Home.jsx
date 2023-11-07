@@ -1,11 +1,20 @@
+import Footer from "../Shared/Footer";
+import Banner from "./Banner";
+import Faq from "./FAQ";
+import Features from "./Features";
 
 const Home = () => {
 
     return (
-        <div>
-         <h3>home page</h3>
+       <div>
+         <div className="mx-5 md:mx-8 lg:mx-10">
+            <Banner></Banner>
+            <Features></Features>
+            <Faq></Faq>
             
         </div>
+        <Footer></Footer>
+       </div>
     );
 };
 

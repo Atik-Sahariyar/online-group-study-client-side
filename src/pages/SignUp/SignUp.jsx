@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 const SignUp = () => {
@@ -9,9 +10,10 @@ const SignUp = () => {
     const { createUser, googleSignIn } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
+    const axiosSecure = useAxiosSecure()
 
     //    new user create function
-  
+
 
     const handleRegistration = async (e) => {
         e.preventDefault();
@@ -20,88 +22,60 @@ const SignUp = () => {
         const imgURL = form.get('photo');
         const email = form.get('email');
         const password = form.get('password');
-    
-        const userInfo = { name, imgURL, email, password};
-    
+
+        const userInfo = { name, imgURL, email, password };
+
         if (password.length < 6 || !/[a-z]/.test(password) || !/[A-Z]/.test(password)) {
             const message = 'Password must be at least 6 characters long and contain both lowercase and uppercase letters.';
             setWeakPassword(message);
             return;
         }
-    
+
         try {
             await createUser(email, password);
-            
-            const response = await fetch('http://localhost:5000/users', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(userInfo)
-            });
-            console.log(response.data);
-            Swal.fire('Registration successful!');
-            navigate(location?.state ? location.state : '/');
+
+            const response = await axiosSecure.post('/users', userInfo )
+
+            if (response.status === 201) {
+                Swal.fire('Registration successful!');
+                navigate(location?.state ? location.state : '/');
+            } else if (response.status === 400) {
+                Swal.fire('Email address is already in use. Please choose a different email.');
+            } else {
+                Swal.fire('Registration failed. Please try again later.');
+            }
         } catch (error) {
             console.error(error);
-           
+            Swal.fire('Registration failed. Please try again later.');
         }
     };
-    
-     // sign up with google
-     const handleGoogleRegister = async () => {
+
+    // sign up with google
+    const handleGoogleRegister = async () => {
         try {
             const result = await googleSignIn();
             console.log(result);
             const name = await result.user.displayName;
             const email = await result.user.email;
             const imgURL = await result.user.photoURL;
-            const password = ''; 
-    
+            const password = '';
+
             const userInfo = { name, imgURL, email, password };
             console.log(userInfo);
-            const response = await fetch('http://localhost:5000/users', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(userInfo)
-            });
+            const response = await axiosSecure.post('/users', userInfo )
             console.log(response.data);
-    
+
             Swal.fire('Registration successful!');
             navigate(location?.state ? location.state : '/');
         } catch (error) {
             console.error(error);
-           
+
         }
     };
-    // const handleGoogleRegister = async() => {
-       
-    //     const result =  await googleSignIn()
-    //     .then(result => {
-    //         console.log(result);
-    //         const name = result.displayName;
-    //         const email = result.email;
-    //         const imgURL = result.photoURL;
-    //         const password = '';
-
-    //         const userInfo = {name, imgURL, email, password}
-    //         const response =  axiosSecure.post('/users', userInfo, {
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             }
-    //         });
-    //         Swal.fire('Registration successfull!')
-    //         navigate(location?.state ? location.state : '/');
-    //     })
-    //     .catch(error => {
-    //         console.log(error)
-    //     });
-    // }
+   
     return (
         <div className="text-center">
-          
+
             <h3 className="text-3xl my-8">Please registration</h3>
             <form onSubmit={handleRegistration} className=" mx-auto w-1/2">
                 {
