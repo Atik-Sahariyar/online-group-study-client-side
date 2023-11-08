@@ -32,8 +32,9 @@ const SubmittedAssignments = () => {
                             <th>Assignment title</th>
                             <th>Assignment pdf</th>
                             <th>Marks</th>
-                            <th>Give marks</th>
                             <th>Status</th>
+                            <th>Give marks</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
