@@ -1,0 +1,56 @@
+[
+   
+    {
+      "assignmentTitle": "Machine Learning Project",
+      "marks": "160",
+      "description": "Implement a machine learning algorithm to solve a real-world problem. Use appropriate datasets and evaluate the model's performance.",
+      "difficultyLevel": "hard",
+      "dueDate": "2023-11-23T18:00:00.000Z",
+      "isFeature": true,
+      "thumbnailImgURL": "https://i.ibb.co/vqjxHgV/Machine-Learning-Project.jpg",
+      "createdBy": "Olivia Martinez",
+      "creatorEmail": "olivia.martinez@example.com",
+      "isFeatured": true,
+      "lastDate": "2023-11-18T18:00:00.000Z"
+    },
+    {
+      "assignmentTitle": "UI/UX Design Challenge",
+      "marks": "110",
+      "description": "Create a visually appealing user interface and user experience for a mobile app. Focus on usability and aesthetics.",
+      "difficultyLevel": "medium",
+      "dueDate": "2023-11-21T18:00:00.000Z",
+      "isFeature": true,
+      "thumbnailImgURL": "https://i.ibb.co/bbGGHbV/UI-UX-Design-Challenge.jpg",
+      "createdBy": "Liam Johnson",
+      "creatorEmail": "liam.johnson@example.com",
+      "isFeatured": true,
+      "lastDate": "2023-11-16T18:00:00.000Z"
+    },
+    {
+      "assignmentTitle": "Game Development Project",
+      "marks": "170",
+      "description": "Develop an interactive and engaging game. Implement game mechanics, graphics, and sound effects for an immersive experience.",
+      "difficultyLevel": "hard",
+      "dueDate": "2023-11-26T18:00:00.000Z",
+      "isFeature": true,
+      "thumbnailImgURL": "https://i.ibb.co/Vj0Knt0/Game-Development-Project.jpg",
+      "createdBy": "Ethan Parker",
+      "creatorEmail": "ethan.parker@example.com",
+      "isFeatured": true,
+      "lastDate": "2023-11-20T18:00:00.000Z"
+    },
+    {
+      "assignmentTitle": "Cybersecurity Challenge",
+      "marks": "140",
+      "description": "Identify and address security vulnerabilities in a simulated environment. Demonstrate knowledge of cybersecurity best practices.",
+      "difficultyLevel": "medium",
+      "dueDate": "2023-11-25T18:00:00.000Z",
+      "isFeature": true,
+      "thumbnailImgURL": "https://i.ibb.co/3k4Gh2K/Cybersecurity-Challenge.jpg",
+      "createdBy": "Ava Turner",
+      "creatorEmail": "ava.turner@example.com",
+      "isFeatured": true,
+      "lastDate": "2023-11-19T18:00:00.000Z"
+    }
+  ]
+  

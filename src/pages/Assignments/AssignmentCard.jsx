@@ -1,35 +1,14 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
-import Swal from "sweetalert2";
 
-const AssignmentCard = ({ assignment }) => {
+
+const AssignmentCard = ({ assignment, handleDeleteAssignment }) => {
     const { user } = useAuth();
-    const axiosSecure = useAxiosSecure();
-    const { _id,creatorEmail, assignmentTitle, marks, difficultyLevel, thumbnailImgURL } = assignment;
+    const { _id, assignmentTitle, marks, difficultyLevel, thumbnailImgURL } = assignment;
     const userEmail = user?.email || '';
 
-    // // delete assignment function
-    const handleDeleteAssignment = async(id, email ) => {
-        const proceed = confirm('Are You sure you want to delete');
-        if(!proceed){
-            ''
-        } else if ( email !== creatorEmail) {
-            Swal.fire('Only the person who created this assignment can delete it');
-
-        } else {
-            
-            try{
-                const response = await axiosSecure.delete(`/assignments/${id}`);
-                console.log(response.data);
-                
-            } catch (error) {
-                console.error("Error fetching assinment: ", error);
-
-            }
-        }
-    }
+  
 
     return (
         <div className="card w-96 h-[440px]  bg-base-100 shadow-xl relative">
@@ -53,7 +32,7 @@ const AssignmentCard = ({ assignment }) => {
                                 <button className="mx-8 btn btn-primary">Update</button>
                             </Link>
                             
-                                <button onClick={() => handleDeleteAssignment(_id, userEmail)} className="btn btn-primary">Delete</button>
+                                <button onClick={() => handleDeleteAssignment(_id, userEmail, assignment)} className="btn btn-primary">Delete</button>
                             
                         </div> 
                         :
@@ -74,6 +53,7 @@ const AssignmentCard = ({ assignment }) => {
     );
 };
 AssignmentCard.propTypes = {
-    assignment: PropTypes.object
+    assignment: PropTypes.object,
+    handleDeleteAssignment: PropTypes.func
 }
 export default AssignmentCard;
