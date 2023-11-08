@@ -10,6 +10,8 @@ import SubmittedAssignments from "../pages/SubmittedAssignments/SubmittedAssignm
 import Assignments from "../pages/Assignments/Assignments";
 import ViewAssignment from "../Components/ViewAssignment/ViewAssignment";
 import UpdateAssignment from "../Components/UpdateAssignments/UpdateAssignment";
+import AssignmentSubmission from "../Components/ViewAssignment/AssignmentSubmission";
+import GiveAssignmentMarks from "../pages/SubmittedAssignments/GiveAssignmentMarks";
 
 const routes = createBrowserRouter([
     {
@@ -45,12 +47,21 @@ const routes = createBrowserRouter([
                 element: <PrivateRoute> <ViewAssignment></ViewAssignment> </PrivateRoute>,
             },
             {
+                path: "assignmentSubmission/:id",
+                element: <PrivateRoute> <AssignmentSubmission></AssignmentSubmission> </PrivateRoute>,
+            },
+
+            {
                 path: "update-assignment/:id",
                 element: <PrivateRoute> <UpdateAssignment></UpdateAssignment> </PrivateRoute>,
             },
             {
                 path: "submitted-assignments",
                 element: <PrivateRoute> <SubmittedAssignments></SubmittedAssignments> </PrivateRoute>
+            },
+            {
+                path: "give-assignment-marks/:id",
+                element: <PrivateRoute> <GiveAssignmentMarks></GiveAssignmentMarks> </PrivateRoute>
             }
         ]
     }

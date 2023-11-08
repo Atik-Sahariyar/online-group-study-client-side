@@ -2,23 +2,31 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const AssignmentCard = ({ assignment }) => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
     const { _id,creatorEmail, assignmentTitle, marks, difficultyLevel, thumbnailImgURL } = assignment;
-    console.log(assignment);
-    const userEmail = user.email;
+    const userEmail = user?.email || '';
+
     // // delete assignment function
     const handleDeleteAssignment = async(id, email ) => {
         const proceed = confirm('Are You sure you want to delete');
-        if(proceed && email === creatorEmail) {
+        if(!proceed){
+            ''
+        } else if ( email !== creatorEmail) {
+            Swal.fire('Only the person who created this assignment can delete it');
+
+        } else {
+            
             try{
                 const response = await axiosSecure.delete(`/assignments/${id}`);
                 console.log(response.data);
                 
             } catch (error) {
-                console.error("Error fetching assinment: ", error)
+                console.error("Error fetching assinment: ", error);
+
             }
         }
     }
@@ -37,7 +45,7 @@ const AssignmentCard = ({ assignment }) => {
 
                 {
                     user ?
-                        <div className="card-actions absolute bottom-3 ">
+                        <div className="card-actions absolute bottom-5 ">
                             <Link to={`/view-assignment/${_id}`}>
                                 <button className=" btn btn-primary">View</button>
                             </Link>
@@ -49,7 +57,7 @@ const AssignmentCard = ({ assignment }) => {
                             
                         </div> 
                         :
-                        <div className="card-actions absolute bottom-3 ">
+                        <div className="card-actions absolute bottom-5 ">
                         <Link to="/signIn">
                             <button className=" btn btn-primary">View</button>
                         </Link>

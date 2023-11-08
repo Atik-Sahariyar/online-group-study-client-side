@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import {  useLocation, useNavigate, useParams } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
@@ -14,12 +14,15 @@ const UpdateAssignment = () => {
     const [ assignment, setassignment ] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [selectedLevel, setSelectedLevel] = useState('');
+    const [selectedLevel, setSelectedLevel] = useState('easy');
     const [dueDate, setDueDate] = useState(null);
     const [isFeature, setIsFeature] = useState(false);
     const { user } = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
     const createdBy = user.displayName;
     const creatorEmail = user.email;
+
    
  
     // deficulty level select
@@ -88,7 +91,9 @@ const handleUpdateAssignment = async (e) => {
 
         if (response.status === 201) {
             Swal.fire('Assignment updated successfully');
+        
             console.log(response.data);
+            navigate(location?.state ? location?.state : '/assignments')
         } else {
             Swal.fire('Failed to update assignment');
         }
