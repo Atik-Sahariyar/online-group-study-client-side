@@ -19,7 +19,8 @@ const SubmittedAssignments = () => {
 
         fetchPendingAssignments();
     }, [axiosSecure])
-    console.log(pendingAssignments);
+    
+    
     return (
         <div>
             <h4 className=" text-center text-4xl my-8 font-bold">All Submitted assignments</h4>

@@ -1,6 +1,6 @@
 import Footer from "../Shared/Footer";
 import Banner from "./Banner";
-import Faq from "./FAQ";
+import Faq from "./Faq";
 import Features from "./Features";
 
 const Home = () => {

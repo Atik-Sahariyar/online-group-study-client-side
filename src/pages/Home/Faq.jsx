@@ -29,7 +29,7 @@ const Faq = () => {
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Frequently Asked Questions </h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {faqData.map((faq, index) => (
+            {faqData?.map((faq, index) => (
               <div key={index} className="bg-white p-6 rounded shadow-md">
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">{faq.question}</h3>
                 <p className="text-gray-600">{faq.answer}</p>

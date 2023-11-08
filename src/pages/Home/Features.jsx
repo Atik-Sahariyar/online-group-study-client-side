@@ -15,9 +15,8 @@ const Features = () => {
                 </span>
             ) :
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {assignments
-                        .filter((assignment) => assignment.isFeatured)
-                        .map((featuredAssignment) => (
+                    { 
+                        assignments?.filter((assignment) => assignment.isFeatured)?.map((featuredAssignment) => (
                             <FeaturedCard key={featuredAssignment._id} assignment={featuredAssignment} />
                         ))
                     }

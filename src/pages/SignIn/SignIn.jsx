@@ -23,7 +23,7 @@ const SignIn = () => {
                     console.log(loggedInUser);
                     const user = { email };
                     // get access token
-                    axios.post('http://localhost:5000/jwt', user, {withCredentials: true} )
+                    axios.post('https://online-group-study-server-woad.vercel.app/jwt', user, {withCredentials: true} )
                         .then(res => {
                             console.log(res.data)
                             if (res.data.success) {
@@ -55,7 +55,7 @@ const SignIn = () => {
                 const user  =  loggedInUser.email 
               
                 // get access token
-                axios.post('http://localhost:5000/jwt', {user}, {withCredentials: true} )
+                axios.post('https://online-group-study-server-woad.vercel.app/jwt', {user}, {withCredentials: true} )
                 .then(res => {
                         console.log(res.data)
                         if (res.data.success) {
