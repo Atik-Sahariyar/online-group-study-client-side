@@ -21,6 +21,10 @@ const Faq = () => {
         {
           question: 'Are there resources for learning advanced topics like machine learning and blockchain?',
           answer: 'Yes, there are numerous online resources for learning advanced topics. You can enroll in online courses, join specialized forums, and read research papers. Platforms like Coursera, edX, and Khan Academy offer in-depth courses on machine learning, blockchain, and other advanced subjects. Additionally, consider joining coding bootcamps or specialized workshops for hands-on learning experiences.',
+        },
+        {
+          question: 'Are there resources for learning advanced topics like machine learning and blockchain?',
+          answer: 'Yes, there are numerous online resources for learning advanced topics. You can enroll in online courses, join specialized forums, and read research papers. Platforms like Coursera, edX, and Khan Academy offer in-depth courses on machine learning, blockchain, and other advanced subjects. Additionally, consider joining coding bootcamps or specialized workshops for hands-on learning experiences.',
         }
         
       ];
