@@ -7,7 +7,7 @@ const SignIn = () => {
     const { signIn, googleSignIn } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
-
+    const from = location.state?.from?.pathname || '/';
 
     // sign in with email and password
     const handleLogin = event => {
@@ -15,6 +15,7 @@ const SignIn = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
+        
 
         signIn(email, password)
             .then(result => {
@@ -28,7 +29,7 @@ const SignIn = () => {
                         .then(res => {
                             console.log(res.data)
                             if (res.data.success) {
-                                navigate(location?.state ? location?.state : '/')
+                                navigate(from, {replace: true})
                             }
                         })
                 } catch (error){
@@ -62,8 +63,7 @@ const SignIn = () => {
                 .then(res => {
                         console.log(res.data)
                         if (res.data.success) {
-                            navigate(location?.state ? location?.state : '/')
-                        }
+                            navigate(from, {replace: true})                        }
                     })
             } catch (error){
                 console.error(' iwt error: ' , error);

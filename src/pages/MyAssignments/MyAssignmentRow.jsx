@@ -1,9 +1,13 @@
 import PropTypes from "prop-types"
+import { Link } from "react-router-dom";
+
 
 const MyAssignmentRow = ({ myAssignment }) => {
     return (
         <tr className="hover:bg-base-200">
             <td>{myAssignment?.assignment.assignmentTitle}</td>
+            <td className="text-blue-600 hover:text-blue-800"><Link o={myAssignment?.pdfLink}  target="_blank">View PDF Link</Link></td>
+
             {
                 myAssignment?.status === 'pending' ?
                     <span className=" text-red-600">

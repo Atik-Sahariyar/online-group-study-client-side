@@ -35,6 +35,7 @@ const MyAssignments = () => {
                     <tr>
                        
                         <th>Assignment title</th>
+                        <th>My Submission</th>
                         <th>Assignment Status</th>
                         <th>Marks</th>
                         <th>My Obtained marks</th>

@@ -12,7 +12,7 @@ const SubmittedAssignmentRow = ({ pendingAssignment }) => {
         <tr className="hover:bg-base-200">
             <td>{pendingAssignment?.examineeName}</td>
             <td>{pendingAssignment?.assignment?.assignmentTitle}</td>
-            <td className="text-blue-600 hover:text-blue-800"><Link to={pendingAssignment?.pdfLink}>View PDF Link</Link></td>
+            <td className="text-blue-600 hover:text-blue-800"><Link to={pendingAssignment?.pdfLink}  target="_blank">View PDF Link</Link></td>
             <td>{pendingAssignment?.assignment?.marks}</td>
             <td>Pending</td>
             <td>

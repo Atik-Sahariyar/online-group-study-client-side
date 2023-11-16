@@ -55,6 +55,7 @@ const SignUp = () => {
         try {
             const result = await googleSignIn();
             console.log(result);
+            navigate(location?.state ? location.state : '/');
             const name = await result.user.displayName;
             const email = await result.user.email;
             const imgURL = await result.user.photoURL;
@@ -66,7 +67,7 @@ const SignUp = () => {
             console.log(response.data);
 
             Swal.fire('Registration successful!');
-            navigate(location?.state ? location.state : '/');
+            
         } catch (error) {
             console.error(error);
 
