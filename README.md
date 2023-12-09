@@ -3,6 +3,11 @@
 
 This repository contains the frontend codebase for the Online Group Study project.
 
+## Live Link 
+   [Online Group Study](https://dist-nine-navy.vercel.app/)
+## Server Side code Link
+   [Online Group Study - Server Side](https://github.com/Atik-Sahariyar/online-group-study-server)
+   
 ## Table of Contents
 
 - [Description](#description)
